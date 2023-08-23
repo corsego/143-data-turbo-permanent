@@ -11,13 +11,30 @@
   </head>
 
   <body>
+    <script>
+      function pictureOpen() {
+        document.querySelector('video').requestPictureInPicture()      
+      }
+    </script>
     <div>
-      <%= link_to 'Home', root_path %>
-      <%= link_to 'Pricing', pricing_path %>
-      <%= link_to 'Privacy', privacy_path %>
-      <%= link_to 'Terms', terms_path %>
-      <%= link_to 'About', about_path %>
+      <%#= link_to 'Home', root_path %>
+      <%#= link_to 'Pricing', pricing_path %>
+      <%#= link_to 'Privacy', privacy_path %>
+      <%#= link_to 'Terms', terms_path %>
+      <%#= link_to 'About', about_path %>
+      <%= link_to 'Home', root_path, onclick: 'pictureOpen()' %>
+      <%= link_to 'Pricing', pricing_path, onclick: 'pictureOpen()' %>
+      <%= link_to 'Privacy', privacy_path, onclick: 'pictureOpen()' %>
+      <%= link_to 'Terms', terms_path, onclick: 'pictureOpen()' %>
+      <%= link_to 'About', about_path, onclick: 'pictureOpen()' %>
     </div>
+    <div id="a-permanent-element" data-turbo-permanent>
+      <%= audio_tag 'sample-15s', controls: 'true' %>
+      <%= video_tag 'sample-5s', controls: 'true', width: '500px' %>
+      <%= Time.zone.now %>
+    </div>
+    outside the permanent div:
+    <%= Time.zone.now %>
     <%= yield %>
   </body>
 </html>
